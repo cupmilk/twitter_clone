@@ -17,8 +17,12 @@ const Nweet = (props) => {
     if (sure) {
       //firestore의 collection - doc 부분 삭제
       await deleteDoc(MESSAGE_OBJ);
+      //파일유무확인
+      //파일이 존재하는지 확인을 안하면 firestore에서 없는걸 없애야하기 때문에 오류 발생
+      if (messageObj.downloadFileUrl !== "") {
+        await deleteObject(ref(storageService, messageObj.downloadFileUrl));
+      }
       //storage의 파일의 이름이 messageObj.downloadFileUrl에 해당하는 거 삭제
-      await deleteObject(ref(storageService, messageObj.downloadFileUrl));
     }
   };
 

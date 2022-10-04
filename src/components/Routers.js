@@ -7,16 +7,19 @@ import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 
 const Routers = (props) => {
-  const { isLogIn, userInf } = props;
+  const { isLogIn, userInf, refreshUser } = props;
   return (
     <Router>
-      {isLogIn && <Navigation />}
+      {isLogIn && <Navigation userInf={userInf} />}
 
       <Routes>
         {isLogIn ? (
           <>
             <Route path="/" element={<Home userInf={userInf} />} />
-            <Route path="/profile" element={<Profile userInf={userInf} />} />
+            <Route
+              path="/profile"
+              element={<Profile userInf={userInf} refreshUser={refreshUser} />}
+            />
           </>
         ) : (
           <Route path="/" element={<Auth />} />

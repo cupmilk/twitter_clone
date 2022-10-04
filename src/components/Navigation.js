@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = (props) => {
+  const { userInf } = props;
+
+  console.log(userInf);
+
   return (
     <div>
       <nav>
@@ -10,7 +14,10 @@ const Navigation = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/profile">My profile</Link>
+            <Link to="/profile">
+              {userInf.displayName ? userInf.displayName : userInf.email}의
+              Profile
+            </Link>
           </li>
         </ul>
       </nav>
