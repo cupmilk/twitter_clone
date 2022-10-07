@@ -1,22 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "css/Navigation.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = (props) => {
   const { userInf } = props;
 
-  console.log(userInf);
-
   return (
-    <div>
+    <div className="Navigation">
       <nav>
-        <ul>
+        <ul className="nav_menu">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="toHome" to="/">
+              <FontAwesomeIcon className="twitter_logo" icon={faTwitter} />
+            </Link>
           </li>
           <li>
-            <Link to="/profile">
-              {userInf.displayName ? userInf.displayName : userInf.email}의
-              Profile
+            <Link className="toProfile" to="/profile">
+              <FontAwesomeIcon className="icon_profile" icon={faUser} />
+              {/* {userInf.displayName ? userInf.displayName : userInf.email}의
+              Profile */}
             </Link>
           </li>
         </ul>

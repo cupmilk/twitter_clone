@@ -3,7 +3,10 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { dbService, storageService } from "myFirebase";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-
+import "css/MessageFactory.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 const MessageFactory = (props) => {
   const { userInf } = props;
   const [message, setMessage] = useState("");
@@ -65,15 +68,32 @@ const MessageFactory = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
+          id="add_file"
+          className="file_menu"
+          type="file"
+          accept="image/*"
+          onChange={handleFile}
+        />
+        <label for="add_file" className="file_meun_lable">
+          <FontAwesomeIcon className="file_meun_icon" icon={faPlusSquare} />
+        </label>
+        <input
+          className="message_area"
           type="text"
           value={message}
           onChange={handleChange}
           placeholder="what's on your mind"
           maxLength="120"
         />
-        <input type="file" accept="image/*" onChange={handleFile} />
-
-        <input type="submit" value="send" />
+        <label for="message_send">
+          <FontAwesomeIcon className="message_send_icon" icon={faPaperPlane} />
+        </label>
+        <input
+          type="submit"
+          value="send"
+          className="message_send"
+          id="message_send"
+        />
         {fileUrl && (
           <div>
             <img src={fileUrl} alt="" width="50px" height="50px" />

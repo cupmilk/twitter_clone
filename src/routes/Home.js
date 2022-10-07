@@ -3,7 +3,7 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { dbService } from "myFirebase";
 import React, { useEffect, useState } from "react";
 import MessageFactory from "components/MessageFactory";
-
+import "css/Home.css";
 const Home = (props) => {
   const { userInf } = props;
 
@@ -22,7 +22,7 @@ const Home = (props) => {
 
   // console.log(messages);
   return (
-    <div>
+    <div className="home">
       <MessageFactory userInf={userInf} />
       <div>
         {messages.map((nweet) => (

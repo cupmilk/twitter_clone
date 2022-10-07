@@ -1,0 +1,32 @@
+.form {
+  margin: 5% 3% auto;
+  text-align: center;
+}
+
+.form_input {
+  width: 50%;
+  height: 100%;
+}
+
+.error_message {
+  font-size: 0.75rem;
+  color: red;
+}
+
+.input_submit {
+  display: block;
+  margin: 1% auto;
+  width: 50%;
+  height: 40px;
+  display: block;
+  border: 1px solid #dadce0;
+  border-radius: 15px;
+}
+
+.toggleAccount {
+  margin-top: 10%;
+  color: blue;
+  border: 0;
+  outline: 0;
+  background: none;
+}

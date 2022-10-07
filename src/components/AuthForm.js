@@ -4,6 +4,7 @@ import {
 } from "firebase/auth";
 import { authService } from "myFirebase";
 import React, { useState } from "react";
+import "css/authForm.css";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -47,8 +48,9 @@ const AuthForm = () => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
+          className="form_input"
           name="email"
           type="email"
           placeholder="Email"
@@ -57,6 +59,7 @@ const AuthForm = () => {
           required
         />
         <input
+          className="form_input"
           name="password"
           type="password"
           placeholder="Password"
@@ -64,12 +67,17 @@ const AuthForm = () => {
           onChange={handleChange}
           required
         />
-        <input type="submit" value={account ? "login" : "create"} />
+
+        <p className="error_message"> {errorMessage[1]}</p>
+        <input
+          className="input_submit"
+          type="submit"
+          value={account ? "login" : "create"}
+        />
+        <button className="toggleAccount" onClick={toggleAccount}>
+          {account ? "create Account" : "sign in"}
+        </button>
       </form>
-      <p> {errorMessage[1]}</p>
-      <span onClick={toggleAccount}>
-        {account ? "create Account" : "sign in"}
-      </span>
     </>
   );
 };

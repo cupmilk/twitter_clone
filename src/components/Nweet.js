@@ -2,6 +2,7 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { dbService, storageService } from "myFirebase";
 import React, { useState } from "react";
+import "../css/Nweet.css";
 
 const Nweet = (props) => {
   const { messageObj, isOwner } = props;
@@ -36,7 +37,6 @@ const Nweet = (props) => {
   //메세지 업데이트 , edit상태 변화
   const editSubmit = (e) => {
     e.preventDefault();
-    console.log(newText, messageObj);
     updateDoc(MESSAGE_OBJ, {
       text: newText,
     });
@@ -47,7 +47,6 @@ const Nweet = (props) => {
     setEit((prev) => !prev);
   };
 
-  console.dir(messageObj);
   return (
     <div>
       {edit ? (

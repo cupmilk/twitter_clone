@@ -18,7 +18,6 @@ function App() {
     // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#onauthstatechanged
     authService.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
         setUserInf(user);
       } else {
         setUserInf(null);

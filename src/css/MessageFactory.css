@@ -1,0 +1,43 @@
+.message_area {
+  width: 35%;
+  height: 1.5rem;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.file_menu {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.file_meun_lable {
+  width: 40px;
+  height: 40px;
+}
+
+.file_meun_icon {
+  padding-top: 10px;
+  font-size: 1.75rem;
+  vertical-align: -0.35em;
+}
+
+.message_send {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.message_send_icon {
+  font-size: 1.5rem;
+}
