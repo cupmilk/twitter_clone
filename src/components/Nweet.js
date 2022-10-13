@@ -2,7 +2,6 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { dbService, storageService } from "myFirebase";
 import React, { useState } from "react";
-import "../css/Nweet.css";
 
 const Nweet = (props) => {
   const { messageObj, isOwner } = props;

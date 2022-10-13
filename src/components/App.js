@@ -28,16 +28,17 @@ function App() {
   return (
     <>
       {/* init 초기값 false인 이유 : init의 상태에 따라 router을 통해 보여주는것이 다름  */}
-      {init ? (
-        <Routers
-          refreshUser={refreshUser}
-          isLogIn={Boolean(userInf)}
-          userInf={userInf}
-        />
-      ) : (
-        "initailzing.."
-      )}
-      <footer> &copy; clone {new Date().getFullYear()}</footer>
+      <div className="app_body">
+        {init ? (
+          <Routers
+            refreshUser={refreshUser}
+            isLogIn={Boolean(userInf)}
+            userInf={userInf}
+          />
+        ) : (
+          "initailzing.."
+        )}
+      </div>
     </>
   );
 }

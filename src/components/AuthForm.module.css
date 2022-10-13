@@ -1,0 +1,41 @@
+.authForm {
+  margin: 3% 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form_input {
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  min-height: 50px;
+
+  font-size: 18px;
+  text-align: center;
+  justify-content: center;
+
+  border: 1px solid #dadce0;
+  border-radius: 9999px;
+}
+
+.input_submit {
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  min-height: 50px;
+
+  margin-top: 30px;
+
+  background-color: rgb(29, 155, 240);
+  border-color: rgba(0, 0, 0, 0);
+  border-radius: 9999px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+
+.auth_authSwitch {
+  font-size: 1.5rem;
+  color: blue;
+}

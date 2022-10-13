@@ -3,7 +3,7 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { dbService, storageService } from "myFirebase";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import "css/MessageFactory.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
