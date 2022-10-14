@@ -74,7 +74,7 @@ const MessageFactory = (props) => {
           accept="image/*"
           onChange={handleFile}
         />
-        <label for="add_file" className="file_meun_lable">
+        <label htmlFor="add_file" className="file_meun_lable">
           <FontAwesomeIcon className="file_meun_icon" icon={faPlusSquare} />
         </label>
         <input
@@ -85,7 +85,7 @@ const MessageFactory = (props) => {
           placeholder="what's on your mind"
           maxLength="120"
         />
-        <label for="message_send">
+        <label htmlFor="message_send">
           <FontAwesomeIcon className="message_send_icon" icon={faPaperPlane} />
         </label>
         <input
