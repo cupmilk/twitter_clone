@@ -11,7 +11,6 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "routes/Auth.module.css";
-import NweetImg from "img/NweetMain.png";
 
 const Auth = () => {
   const onSocialClick = async (e) => {

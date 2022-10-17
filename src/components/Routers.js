@@ -10,7 +10,7 @@ const Routers = (props) => {
   const { isLogIn, userInf, refreshUser } = props;
   return (
     <Router>
-      {isLogIn && <Navigation userInf={userInf} />}
+      {/* {isLogIn && <Navigation userInf={userInf} />} */}
 
       <Routes>
         {isLogIn ? (

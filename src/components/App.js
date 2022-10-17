@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Routers from "components/Routers";
 import { authService } from "myFirebase";
 import { updateCurrentUser } from "firebase/auth";
+import styles from "components/App.module.css";
 
 function App() {
   const [init, setInit] = useState(false); //firebase가 초기화되도록 유지
@@ -28,7 +29,7 @@ function App() {
   return (
     <>
       {/* init 초기값 false인 이유 : init의 상태에 따라 router을 통해 보여주는것이 다름  */}
-      <div className="app_body">
+      <div className={styles.App_container}>
         {init ? (
           <Routers
             refreshUser={refreshUser}
