@@ -8,24 +8,6 @@ import { Link } from "react-router-dom";
 import styles from "components/LeftBar.module.css";
 
 const LeftBar = () => {
-  const [checkMenu, setCheckMenu] = useState(false);
-  const [menuClicked, setMenuClicked] = useState("styles.left_bar_ul_link_div");
-
-  const rightBarClick = () => {
-    //1. 클릭하면 색깔 변화
-    //2. 브라우저의 다른곳을 클릭하면 굵기만 남게
-    //3. 새로운곳에서 클릭되면 그곳으로 실행
-
-    if (checkMenu) {
-      setMenuClicked(
-        `${styles.left_bar_ul_link_div} ${styles.left_bar_ul_link_click}`
-      );
-      setCheckMenu((prev) => !prev);
-    } else {
-      setMenuClicked(`${styles.left_bar_ul_link_div}`);
-      setCheckMenu((prev) => !prev);
-    }
-  };
   return (
     <div>
       <section className={styles.left_bar_container}>
@@ -35,7 +17,7 @@ const LeftBar = () => {
         <ul className={styles.left_bar_ul}>
           <li className={styles.left_bar_ul_link_li}>
             <Link>
-              <div onClick={rightBarClick} className={menuClicked}>
+              <div className={styles.left_bar_ul_link_div}>
                 <FontAwesomeIcon
                   className={styles.left_bar_ul_icons}
                   icon={faHashtag}
@@ -46,7 +28,7 @@ const LeftBar = () => {
           </li>
           <li className={styles.left_bar_ul_li}>
             <Link>
-              <div onClick={rightBarClick} className={menuClicked}>
+              <div className={styles.left_bar_ul_link_div}>
                 <FontAwesomeIcon
                   className={styles.left_bar_ul_icons}
                   icon={faGear}

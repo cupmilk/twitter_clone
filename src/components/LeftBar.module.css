@@ -65,26 +65,21 @@
   flex-direction: row;
   width: 100%;
   height: 100%;
-  justify-content: flex-start;
   align-items: center;
-
-  height: 100%;
+  border-radius: 50px;
+  padding: 15px;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
 }
-
-.left_bar_ul_link_click {
-  border-radius: 9999px;
-  background-color: rgb(208, 212, 212);
-  color: rgb(15, 20, 25);
+.left_bar_ul_link_div:hover {
+  color: white;
+  background-color: rgb(29, 155, 240);
 }
 
 .left_bar_ul_icons {
-  width: 1.75rem;
-  height: 1.75rem;
+  font-size: 25px;
 }
 
 .left_bar_ul_span {
-  font-size: 20px;
-  font-weight: 400px;
-  margin: 0 16px 0 20px;
-  line-height: 24px;
+  margin-left: 5px;
 }
