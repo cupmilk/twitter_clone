@@ -26,7 +26,6 @@ const Home = (props) => {
   return (
     // <div className="home" style={styles.Home}>
     <div className={styles.home_container}>
-      <LeftBar />
       <MessageFactory userInf={userInf} />
       <div className="Nweet_messages">
         {messages.map((nweet) => (

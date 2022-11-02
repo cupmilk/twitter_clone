@@ -1,0 +1,47 @@
+.Navigation {
+  border-right: 1px solid #ebebeb;
+  width: 275px;
+  height: 100vh;
+  padding-right: 30px;
+}
+.twitter_logo_contianer {
+  margin: 20px 0 30px 0;
+}
+
+.twitter_logo {
+  color: rgb(29, 155, 240);
+  padding-left: 15px;
+  font-size: 40px;
+}
+
+.nav_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 20px;
+}
+
+.link div {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 15px;
+}
+
+.link div:hover {
+  background-color: #ebebeb;
+  border-radius: 25px;
+}
+
+.link box {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link div :nth-child(1) {
+  margin-right: 15px;
+  font-size: 24px;
+}

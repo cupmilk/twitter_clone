@@ -67,6 +67,7 @@ const MessageFactory = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        {/* 라벨로 만들고 display : none 이나 사이즈 0으로 만들어서 */}
         <input
           id="add_file"
           className="file_menu"
