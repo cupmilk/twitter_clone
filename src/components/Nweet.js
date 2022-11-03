@@ -2,11 +2,12 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { dbService, storageService } from "myFirebase";
 import React, { useState } from "react";
+import styles from "components/Nweet.module.css";
 
 const Nweet = (props) => {
   const { messageObj, isOwner } = props;
   //편집상태 파악
-  const [edit, setEit] = useState(false);
+  const [edit, setEdit] = useState(false);
   //편집할때의 input값
   const [newText, setNewText] = useState(messageObj.text);
 
@@ -39,17 +40,17 @@ const Nweet = (props) => {
     updateDoc(MESSAGE_OBJ, {
       text: newText,
     });
-    setEit(false);
+    setEdit(false);
   };
 
   const toggleEditing = () => {
-    setEit((prev) => !prev);
+    setEdit((prev) => !prev);
   };
 
   return (
     <div>
       {edit ? (
-        <>
+        <div className={styles.message_container}>
           {isOwner && (
             <>
               <form onSubmit={editSubmit}>
@@ -66,9 +67,9 @@ const Nweet = (props) => {
               </form>
             </>
           )}
-        </>
+        </div>
       ) : (
-        <>
+        <div className={styles.message_container}>
           <h4>{messageObj.text}</h4>
           {messageObj.downloadFileUrl && (
             <img
@@ -86,7 +87,7 @@ const Nweet = (props) => {
               <button onClick={toggleEditing}>Edit</button>
             </>
           )}
-        </>
+        </div>
       )}
     </div>
   );

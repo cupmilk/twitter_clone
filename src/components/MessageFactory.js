@@ -5,8 +5,10 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+
+import styles from "components/MessageFactory.module.css";
+
 const MessageFactory = (props) => {
   const { userInf } = props;
   const [message, setMessage] = useState("");
@@ -25,9 +27,10 @@ const MessageFactory = (props) => {
       //nweet messageObj와 같은거 아님
     }
     const messageObj = {
-      text: message,
-      createdAt: Date.now(),
       creatorId: userInf.uid,
+      createdAt: Date.now(),
+      text: message,
+
       downloadFileUrl,
     };
 
@@ -65,42 +68,53 @@ const MessageFactory = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.MessageFactory}>
       <form onSubmit={handleSubmit}>
         {/* 라벨로 만들고 display : none 이나 사이즈 0으로 만들어서 */}
-        <input
-          id="add_file"
-          className="file_menu"
-          type="file"
-          accept="image/*"
-          onChange={handleFile}
-        />
-        <label htmlFor="add_file" className="file_meun_lable">
-          <FontAwesomeIcon className="file_meun_icon" icon={faPlusSquare} />
-        </label>
-        <input
-          className="message_area"
-          type="text"
-          value={message}
-          onChange={handleChange}
-          placeholder="what's on your mind"
-          maxLength="120"
-        />
-        <label htmlFor="message_send">
-          <FontAwesomeIcon className="message_send_icon" icon={faPaperPlane} />
-        </label>
-        <input
-          type="submit"
-          value="send"
-          className="message_send"
-          id="message_send"
-        />
+        <div>
+          <input
+            id="add_file"
+            className={styles.file_menu}
+            type="file"
+            accept="image/*"
+            onChange={handleFile}
+          />
+
+          <input
+            className={styles.message_area}
+            type="text"
+            value={message}
+            onChange={handleChange}
+            placeholder="what's on your mind"
+            maxLength="120"
+          />
+        </div>
         {fileUrl && (
-          <div>
-            <img src={fileUrl} alt="" width="50px" height="50px" />
-            <button onClick={handleClearfile}>clear</button>
+          <div className={styles.img_preview}>
+            <button onClick={handleClearfile} className={styles.clear_button}>
+              X
+            </button>
+            <img
+              src={fileUrl}
+              alt=""
+              width="350px"
+              height="210px"
+              className={styles.img}
+            />
           </div>
         )}
+        <div className={styles.tool_bar}>
+          <label htmlFor="add_file" className={styles.file_menu_lable}>
+            <FontAwesomeIcon className="file_meun_icon" icon={faImage} />
+            <FontAwesomeIcon className="file_meun_icon" icon={faFaceSmile} />
+          </label>
+          <input
+            type="submit"
+            value="트윗하기"
+            className={styles.message_send}
+            id="message_send"
+          />
+        </div>
       </form>
     </div>
   );
