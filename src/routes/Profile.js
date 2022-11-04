@@ -55,7 +55,6 @@ const Profile = (props) => {
     getMyMessages();
   }, []);
 
-  console.log(messageHistory);
   return (
     <>
       <form onSubmit={handleSubmit}>

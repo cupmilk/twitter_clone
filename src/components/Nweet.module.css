@@ -1,5 +1,14 @@
+.Nweet {
+  display: flex;
+}
+
 .message_container {
   border-bottom: 1px solid #ebebeb;
   width: 100%;
   min-height: 80px;
+}
+
+.profile_img {
+  border-radius: 50%;
+  font-size: 50px;
 }

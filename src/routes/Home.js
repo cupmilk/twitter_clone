@@ -9,9 +9,13 @@ import styles from "routes/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = (props) => {
-  const { userInf } = props;
+  const { userInf, refreshUser } = props;
 
   const [messages, setMessages] = useState([]);
+
+  //sort식을 만들기만 해도 적용이 되는 이유 : 반환 값 정렬한 배열. 원 배열이 정렬되는 것에 유의하세요. 복사본이 만들어지는 것이 아닙니다.
+  const messsageDesc = messages;
+  messsageDesc.sort((a, b) => b.createdAt - a.createdAt);
 
   useEffect(() => {
     // getMessages();
@@ -24,7 +28,6 @@ const Home = (props) => {
     });
   }, []);
 
-  console.log(messages);
   return (
     // <div className="home" style={styles.Home}>
     <div className={styles.home_container}>
@@ -35,12 +38,13 @@ const Home = (props) => {
         </div>
         <MessageFactory userInf={userInf} />
         <div className="Nweet_messages">
-          {messages.map((nweet) => (
+          {messsageDesc.map((nweet) => (
             <Nweet
               key={nweet.id}
               messageObj={nweet}
               //글쓴이와 현재접속자의 id비교하여 검증
               isOwner={nweet.creatorId === userInf.uid}
+              userInf={userInf}
             />
           ))}
         </div>

@@ -15,14 +15,17 @@ const Routers = (props) => {
       <Routes>
         {isLogIn ? (
           <>
-            <Route path="/" element={<Home userInf={userInf} />} />
+            <Route
+              path="/"
+              element={<Home userInf={userInf} refreshUser={refreshUser} />}
+            />
             <Route
               path="/profile"
               element={<Profile userInf={userInf} refreshUser={refreshUser} />}
             />
           </>
         ) : (
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={<Auth />} />
         )}
       </Routes>
     </Router>

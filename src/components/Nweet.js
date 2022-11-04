@@ -1,18 +1,21 @@
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { dbService, storageService } from "myFirebase";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "components/Nweet.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 const Nweet = (props) => {
-  const { messageObj, isOwner } = props;
+  const { messageObj, isOwner, userInf } = props;
   //편집상태 파악
   const [edit, setEdit] = useState(false);
   //편집할때의 input값
   const [newText, setNewText] = useState(messageObj.text);
-
+  const [profileURL, setProfileURL] = useState("");
   const MESSAGE_OBJ = doc(dbService, `nweets/${messageObj.id}`);
-
+  const BASIC_PROFILE_IMG =
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
   const handleDelete = async () => {
     const sure = window.confirm("메세지를 삭제하시겠습니까?");
     if (sure) {
@@ -46,49 +49,69 @@ const Nweet = (props) => {
   const toggleEditing = () => {
     setEdit((prev) => !prev);
   };
+  useEffect(() => {
+    if (messageObj.creatorPorfile === "") {
+      setProfileURL(BASIC_PROFILE_IMG);
+    } else {
+      setProfileURL(messageObj.creatorPorfile);
+    }
+  }, []);
 
+  console.log(messageObj.creatorPorfile);
   return (
-    <div>
-      {edit ? (
-        <div className={styles.message_container}>
-          {isOwner && (
-            <>
-              <form onSubmit={editSubmit}>
-                <input
-                  type="text"
-                  onChange={handleChange}
-                  value={newText}
-                  required
-                />
-                <button type="submit" value="update">
-                  edit
-                </button>
-                <button>cancle</button>
-              </form>
-            </>
-          )}
-        </div>
-      ) : (
-        <div className={styles.message_container}>
-          <h4>{messageObj.text}</h4>
-          {messageObj.downloadFileUrl && (
-            <img
-              src={messageObj.downloadFileUrl}
-              alt=""
-              width="50px"
-              height="50px"
-            />
-          )}
+    <div className={styles.Nweet}>
+      <div className={styles.profile_contianer}>
+        <img
+          className={styles.profile_img}
+          src={profileURL}
+          alt=""
+          width="50px"
+          height="50px"
+        />
+      </div>
+      <div>
+        <span> {messageObj.creatorName}</span>
+        {edit ? (
+          <div className={styles.message_container}>
+            {isOwner && (
+              <>
+                <form onSubmit={editSubmit}>
+                  <input
+                    type="text"
+                    onChange={handleChange}
+                    value={newText}
+                    required
+                  />
+                  <button type="submit" value="update">
+                    edit
+                  </button>
+                  <button>cancle</button>
+                </form>
+              </>
+            )}
+          </div>
+        ) : (
+          <div className={styles.message_container}>
+            <h4>{messageObj.text}</h4>
+            {messageObj.downloadFileUrl && (
+              <img
+                src={messageObj.downloadFileUrl}
+                alt=""
+                width="50px"
+                height="50px"
+              />
+            )}
 
-          {isOwner && (
-            //우클릭해서 에딧하는걸할수있도록 바꾸기
-            <>
-              <button onClick={handleDelete}>delete</button>
-              <button onClick={toggleEditing}>Edit</button>
-            </>
-          )}
-        </div>
-      )}
+            {isOwner && (
+              //우클릭해서 에딧하는걸할수있도록 바꾸기
+              <>
+                <button onClick={handleDelete}>delete</button>
+                <button onClick={toggleEditing}>Edit</button>
+              </>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

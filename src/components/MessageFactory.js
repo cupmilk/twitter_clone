@@ -27,6 +27,10 @@ const MessageFactory = (props) => {
       //nweet messageObj와 같은거 아님
     }
     const messageObj = {
+      creatorPorfile: userInf.photoURL ? userInf.photoURL : "",
+      creatorName: userInf.displayName
+        ? userInf.displayName
+        : userInf.email.split("@")[0],
       creatorId: userInf.uid,
       createdAt: Date.now(),
       text: message,
@@ -66,7 +70,7 @@ const MessageFactory = (props) => {
   const handleClearfile = () => {
     setFileUrl(null);
   };
-
+  console.log();
   return (
     <div className={styles.MessageFactory}>
       <form onSubmit={handleSubmit}>
